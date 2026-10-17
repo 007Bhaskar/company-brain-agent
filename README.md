@@ -13,6 +13,24 @@ An AI agent designed to act as a centralized "Company Brain," leveraging graph s
 * **Core Libraries:** LangChain / LlamaIndex / OpenAI (update based on what you used)
 * **Database/Schema:** Graph Database / Custom Schema
 
+  ## 📊 Graph Data Model & Schema
+This project models organizational knowledge using **FalkorDB** with the following nodes and relationships:
+
+* **Nodes:**
+  * `Person` (e.g., Name, Role)
+  * `Team` (e.g., Department Name)
+  * `Project` (e.g., Title, Status)
+  * `Document` (e.g., Title, Content/RFC)
+  * `Decision` (e.g., Topic, Rationale)
+
+* **Relationships (Cypher Schema):**
+  * `(Person)-[:MEMBER_OF]->(Team)`
+  * `(Person)-[:WROTE]->(Document)`
+  * `(Person)-[:MADE]->(Decision)`
+  * `(Team)-[:OWNS]->(Project)`
+  * `(Project)-[:DOCUMENTED_BY]->(Document)`
+  * `(Decision)-[:AFFECTS]->(Project)`
+
 ## 📦 Getting Started Locally
 
 ### Prerequisites
@@ -33,5 +51,8 @@ Create a .env file in the root directory and add your API keys:
    OPENAI_API_KEY=your_actual_api_key_here
 
 4. Launch Jupyter Notebook:
+
+## 🎥 Demo
+This project is designed to run locally using Python, Jupyter Notebook, and FalkorDB. Please refer to the **Getting Started Locally** section above to run the agent simulation on your machine.
 
    jupyter notebook company_brain_agent.ipynb
